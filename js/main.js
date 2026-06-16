@@ -206,3 +206,29 @@ whatsappQuickReplies?.addEventListener('click', (event) => {
 });
 window.addEventListener('scroll', updateNavbarState, { passive: true });
 updateNavbarState();
+
+// Contact Form Enquiry Handler
+const contactForm = document.querySelector('.form-grid');
+contactForm?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    
+    const name = document.getElementById('name')?.value.trim();
+    const phone = document.getElementById('phone')?.value.trim();
+    const service = document.getElementById('service')?.value;
+    const requirement = document.getElementById('message')?.value.trim();
+    
+    if (!name || !phone) {
+        alert('Please fill in your Name and Phone Number.');
+        return;
+    }
+    
+    const textMessage = `Hi VPC, I would like to submit a project enquiry:\n` +
+                       `- Name: ${name}\n` +
+                       `- Phone: ${phone}\n` +
+                       `- Service Required: ${service}\n` +
+                       `- Requirement: ${requirement || 'N/A'}`;
+                       
+    const whatsappNumber = '919442378859';
+    const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(textMessage)}`;
+    window.open(url, '_blank');
+});
