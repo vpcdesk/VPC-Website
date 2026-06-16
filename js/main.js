@@ -230,5 +230,5 @@ contactForm?.addEventListener('submit', (event) => {
                        
     const whatsappNumber = '919442378859';
     const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(textMessage)}`;
-    window.open(url, '_blank');
+    window.location.href = url;
 });
